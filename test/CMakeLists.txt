@@ -4,14 +4,28 @@ project(Tests)
 
 enable_testing()
 
-find_package(GTest REQUIRED)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  # Specify the commit you depend on and update it regularly.
+  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+
+
+find_package(GTest REQUIRED
+            )
 
 find_package(ZLIB)
 
 set(G_TEST "${PROJECT_NAME}-google-test")
 
-if(GTest_FOUND)
-    include_directories(/googletest/googletest/include/gtest)
+# if(GTest_FOUND)
+    message(STATUS ${GTEST_INCLUDE_DIRS})
+    # include_directories(/googletest/googletest/include/gtest)
 
     # include_directories(${GTEST_INCLUDE_DIRS})
 
@@ -27,8 +41,9 @@ if(GTest_FOUND)
 
     target_link_libraries(
         ${G_TEST} 
-        ${GTEST_LIBRARIES}
-        ${GTEST_MAIN_LIBRARIES}
+        gtest_main
+        # ${GTEST_LIBRARIES}
+        # ${GTEST_MAIN_LIBRARIES}
         pthread
         ZLIB::ZLIB
         )
@@ -36,4 +51,4 @@ if(GTest_FOUND)
         NAME ${G_TEST}
         COMMAND ${G_TEST}
         )
-endif()
+# endif()
