@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"workbench.colorTheme": "Dracula Soft",
+		"files.associations": {
+			"string_view": "cpp",
+			"iostream": "cpp",
+			"ostream": "cpp"
+		}
+	}
+}
