@@ -12,6 +12,8 @@ set(G_TEST "${PROJECT_NAME}-google-test")
 
 if(GTest_FOUND)
 
+    include_directories(${GTEST_INCLUDE_DIRS})
+
     file(GLOB G_TEST_SOURCES
         Gtest_*.cpp
     )
