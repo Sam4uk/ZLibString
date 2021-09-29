@@ -11,8 +11,9 @@ find_package(ZLIB)
 set(G_TEST "${PROJECT_NAME}-google-test")
 
 if(GTest_FOUND)
+    include_directories(/googletest/googletest/include/gtest)
 
-    include_directories(${GTEST_INCLUDE_DIRS})
+    # include_directories(${GTEST_INCLUDE_DIRS})
 
     file(GLOB G_TEST_SOURCES
         Gtest_*.cpp
